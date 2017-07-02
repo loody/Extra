@@ -1,0 +1,1 @@
+include ':app', ':extra-anotation', ':extra-compiler'

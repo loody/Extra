@@ -1,0 +1,14 @@
+/**
+ * Created by loody 6/30/17 3:23 PM .
+ */
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.squareup:javapoet:1.9.0'
+    compile project(':extra-anotation')
+    compile 'com.google.auto.service:auto-service:1.0-rc3'
+}
+
+sourceCompatibility = rootProject.ext.sourceCompatibility
+targetCompatibility = rootProject.ext.targetCompatibility
