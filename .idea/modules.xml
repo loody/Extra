@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Extra.iml" filepath="$PROJECT_DIR$/Extra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extra/extra.iml" filepath="$PROJECT_DIR$/extra/extra.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extra-anotation/extra-anotation.iml" filepath="$PROJECT_DIR$/extra-anotation/extra-anotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extra-compiler/extra-compiler.iml" filepath="$PROJECT_DIR$/extra-compiler/extra-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/extra-gradle-plugin/extra-gradle-plugin.iml" filepath="$PROJECT_DIR$/extra-gradle-plugin/extra-gradle-plugin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+    </modules>
+  </component>
+</project>
