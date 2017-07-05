@@ -35,9 +35,9 @@ import javax.lang.model.type.PrimitiveType;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
-import me.loody.extra.anotation.Extra;
+import me.loody.extra.anotation.ExtraParam;
 
-import static me.loody.extra.compiler.ExtraProcessor.EXTRA_ANNOTATION_TYPE;
+import static me.loody.extra.compiler.ExtraParamProcessor.EXTRA_ANNOTATION_TYPE;
 
 /**
  * 注解处理器
@@ -45,7 +45,7 @@ import static me.loody.extra.compiler.ExtraProcessor.EXTRA_ANNOTATION_TYPE;
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(EXTRA_ANNOTATION_TYPE)
-public final class ExtraProcessor extends AbstractProcessor {
+public final class ExtraParamProcessor extends AbstractProcessor {
     public static final String ACTIVITY_FULL_NAME = "android.app.Activity";
     public static final String FRAGMENT_FULL_NAME = "android.app.Fragment";
     public static final String FRAGMENT_V4_FULL_NAME = "android.support.v4.app.Fragment";
@@ -53,7 +53,7 @@ public final class ExtraProcessor extends AbstractProcessor {
 
     public static final String DOT = ".";
     public static final String PACKAGE_NAME = "me.loody.extra";
-    public static final String EXTRA_ANNOTATION_TYPE = "me.loody.extra.annotation.Extra";
+    public static final String EXTRA_ANNOTATION_TYPE = "me.loody.extra.annotation.ExtraParam";
     public static final String METHOD_INJECT = "inject";
     public static final String METHOD_INJECT_PARAM = "obj";
     public static final String TARGET = "target";
@@ -70,11 +70,11 @@ public final class ExtraProcessor extends AbstractProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> set, RoundEnvironment roundEnvironment) {
-        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(Extra.class);
+        Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(ExtraParam.class);
         if (elements == null || elements.isEmpty()) {
             return true;
         }
-        logger.info(">>> %s: ExtraProcessor begin... <<<");
+        logger.info(">>> %s: ExtraParamProcessor begin... <<<");
         parseExtras(elements);
         try {
             generate();
@@ -84,7 +84,7 @@ public final class ExtraProcessor extends AbstractProcessor {
             logger.error("Exception occurred when generating class file.");
             e.printStackTrace();
         }
-        logger.info(String.format(">>> %s: ExtraProcessor end. <<<"));
+        logger.info(String.format(">>> %s: ExtraParamProcessor end. <<<"));
         return false;
     }
 
@@ -143,7 +143,7 @@ public final class ExtraProcessor extends AbstractProcessor {
                     .addModifiers(Modifier.PUBLIC);
 
             for (Element param : params) {
-                Extra injectParam = param.getAnnotation(Extra.class);
+                ExtraParam injectParam = param.getAnnotation(ExtraParam.class);
                 String fieldName = param.getSimpleName().toString();
 
                 StringBuilder statement = new StringBuilder();

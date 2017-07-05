@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Extra {
+public @interface ExtraParam {
     //key in bundle
     String value() default "";
 }

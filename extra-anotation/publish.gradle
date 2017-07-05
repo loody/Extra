@@ -1,0 +1,72 @@
+apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
+
+Properties config = new Properties()
+config.load(project.file('../VERSION.properties').newDataInputStream())
+def VERSION = config.getProperty("ANNOTATION_VERSION")
+def GROUP = 'me.loody.extra'
+def ARTIFACT_ID = 'annotation'
+
+group = GROUP
+version = VERSION
+
+//项目主页
+def siteUrl = 'https://github.com/loody/Extra'    // project homepage
+//项目的版本控制地址
+def gitUrl = 'https://github.com/loody/Extra/.git' // project git
+//项目issue
+def issueUrl = 'https://github.com/loody/Extra/issues' // project issue
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+publishing {
+    publications {
+        bintray(MavenPublication) {
+            groupId GROUP
+            artifactId ARTIFACT_ID
+            version VERSION
+
+            artifact sourcesJar
+            from components.java
+        }
+    }
+    //定义目标仓库 (包所存放的地方)
+    repositories {
+        //发布到自定义的目录
+        maven {
+            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
+        }
+    }
+}
+
+bintray {
+    Properties properties = new Properties()
+    boolean hasLocalFile = false
+    if (project.rootProject.file('local.properties').exists()) {
+        hasLocalFile = true
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+    }
+    user = hasLocalFile ? properties.getProperty("bintray.user") : ""
+    key = hasLocalFile ? properties.getProperty("bintray.apikey") : ""
+
+    publications = ['bintray']
+    pkg {
+        repo = "maven"
+        name = "extra-annotation"
+        websiteUrl = siteUrl
+        issueTrackerUrl = issueUrl
+        vcsUrl = gitUrl
+        desc = "Annotation for Extra library."
+        labels = ["Android", "Extra", "annotation"]
+        licenses = ["Apache-2.0"]
+        publicDownloadNumbers = true
+        publish = true
+    }
+}
