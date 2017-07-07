@@ -3,7 +3,6 @@
  */
 package me.loody.extra.compiler;
 
-import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -21,7 +20,6 @@ import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
-import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.annotation.processing.SupportedSourceVersion;
@@ -42,7 +40,6 @@ import static me.loody.extra.compiler.ExtraParamProcessor.EXTRA_ANNOTATION_TYPE;
 /**
  * 注解处理器
  */
-@AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @SupportedAnnotationTypes(EXTRA_ANNOTATION_TYPE)
 public final class ExtraParamProcessor extends AbstractProcessor {

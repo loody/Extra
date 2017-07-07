@@ -3,20 +3,20 @@ apply plugin: 'com.github.dcendents.android-maven'
 
 Properties config = new Properties()
 config.load(project.file('../VERSION.properties').newDataInputStream())
-def VERSION = config.getProperty("ROUTER_VERSION")
+def VERSION = config.getProperty("EXTRA_VERSION")
 group = "me.loody.extra"
 version = VERSION
 
 //项目主页
 def siteUrl = 'https://github.com/loody/Extra'    // project homepage
 //项目的版本控制地址
-def gitUrl = 'https://github.com/loody/Extra/.git' // project git
+def gitUrl = 'https://github.com/loody/Extra.git' // project git
 //项目issue
 def issuesUrl = 'https://github.com/loody/Extra/issues' // project issue
 
 install {
     repositories.mavenInstaller.pom.project {
-        packaging 'jar'
+        packaging 'aar'
         name 'Extra'
         artifactId "extra"
         description 'A intent data injector for Android .'
@@ -34,6 +34,11 @@ install {
                 name 'loody'
                 email 'loody128@gmail.com'
             }
+        }
+        scm {
+            connection gitUrl
+            developerConnection gitUrl
+            url siteUrl
         }
     }
 }

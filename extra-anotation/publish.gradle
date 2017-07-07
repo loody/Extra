@@ -13,7 +13,7 @@ version = VERSION
 //项目主页
 def siteUrl = 'https://github.com/loody/Extra'    // project homepage
 //项目的版本控制地址
-def gitUrl = 'https://github.com/loody/Extra/.git' // project git
+def gitUrl = 'https://github.com/loody/Extra.git' // project git
 //项目issue
 def issueUrl = 'https://github.com/loody/Extra/issues' // project issue
 
@@ -38,12 +38,12 @@ publishing {
         }
     }
     //定义目标仓库 (包所存放的地方)
-    repositories {
-        //发布到自定义的目录
-        maven {
-            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
-        }
-    }
+//    repositories {
+//        //发布到自定义的目录
+//        maven {
+//            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
+//        }
+//    }
 }
 
 bintray {
