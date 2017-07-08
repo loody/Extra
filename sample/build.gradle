@@ -1,17 +1,16 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'me.loody.extra'
-//
-//buildscript {
-//    repositories {
-//        mavenCentral()
-//        maven {
-//            url uri('../repo')
-//        }
-//    }
-//    dependencies {
-//        classpath 'me.loody:extra-gradle-plugin:0.1.0'
-//    }
-//}
+apply plugin: 'me.loody.extra'
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url '../repo'
+        }
+    }
+    dependencies {
+        classpath 'me.loody.extra:extra-gradle-plugin:0.1.0'
+    }
+}
 
 
 android {
@@ -41,8 +40,5 @@ dependencies {
     })
     compile "com.android.support:appcompat-v7:${rootProject.ext.supportVersion}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-//    compile project(':extra')
-//    compile project(':extra-anotation')
-//    compile project(':extra-compiler')
     testCompile 'junit:junit:4.12'
 }

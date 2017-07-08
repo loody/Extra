@@ -3,12 +3,16 @@
  */
 apply plugin: 'java'
 
+sourceCompatibility = rootProject.ext.sourceCompatibility
+targetCompatibility = rootProject.ext.targetCompatibility
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':extra-anotation')
     compile 'com.squareup:javapoet:1.9.0'
-//    compile 'com.google.auto.service:auto-service:1.0-rc3'
+    compile 'com.google.auto.service:auto-service:1.0-rc3'
 }
 
-sourceCompatibility = rootProject.ext.sourceCompatibility
-targetCompatibility = rootProject.ext.targetCompatibility
+apply from: 'publish.gradle'
+
+

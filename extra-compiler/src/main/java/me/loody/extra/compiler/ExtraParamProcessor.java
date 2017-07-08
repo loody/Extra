@@ -3,6 +3,7 @@
  */
 package me.loody.extra.compiler;
 
+import com.google.auto.service.AutoService;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -14,15 +15,15 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
-import javax.annotation.processing.SupportedAnnotationTypes;
-import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
@@ -35,13 +36,10 @@ import javax.lang.model.type.TypeMirror;
 
 import me.loody.extra.anotation.ExtraParam;
 
-import static me.loody.extra.compiler.ExtraParamProcessor.EXTRA_ANNOTATION_TYPE;
-
 /**
  * 注解处理器
  */
-@SupportedSourceVersion(SourceVersion.RELEASE_7)
-@SupportedAnnotationTypes(EXTRA_ANNOTATION_TYPE)
+@AutoService(Processor.class)
 public final class ExtraParamProcessor extends AbstractProcessor {
     public static final String ACTIVITY_FULL_NAME = "android.app.Activity";
     public static final String FRAGMENT_FULL_NAME = "android.app.Fragment";
@@ -50,7 +48,6 @@ public final class ExtraParamProcessor extends AbstractProcessor {
 
     public static final String DOT = ".";
     public static final String PACKAGE_NAME = "me.loody.extra";
-    public static final String EXTRA_ANNOTATION_TYPE = "me.loody.extra.annotation.ExtraParam";
     public static final String METHOD_INJECT = "inject";
     public static final String METHOD_INJECT_PARAM = "obj";
     public static final String TARGET = "target";
@@ -71,7 +68,7 @@ public final class ExtraParamProcessor extends AbstractProcessor {
         if (elements == null || elements.isEmpty()) {
             return true;
         }
-        logger.info(">>> %s: ExtraParamProcessor begin... <<<");
+        logger.info(">>>  ExtraParamProcessor begin... <<<");
         parseExtras(elements);
         try {
             generate();
@@ -81,8 +78,8 @@ public final class ExtraParamProcessor extends AbstractProcessor {
             logger.error("Exception occurred when generating class file.");
             e.printStackTrace();
         }
-        logger.info(String.format(">>> %s: ExtraParamProcessor end. <<<"));
-        return false;
+        logger.info(String.format(">>>  ExtraParamProcessor end. <<<"));
+        return true;
     }
 
     private void parseExtras(Set<? extends Element> elements) {
@@ -278,5 +275,17 @@ public final class ExtraParamProcessor extends AbstractProcessor {
 
     private boolean isEmpty(CharSequence c) {
         return c == null || c.length() == 0;
+    }
+
+    @Override
+    public Set<String> getSupportedAnnotationTypes() {
+        Set<String> types = new LinkedHashSet<>();
+        types.add("me.loody.extra.anotation.ExtraParam");
+        return types;
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.RELEASE_7;
     }
 }

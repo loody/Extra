@@ -8,9 +8,8 @@ repositories {
     }
 }
 
-group='me.loody'
+group='me.loody.extra'
 version='0.1.0'
-
 
 
 uploadArchives {
@@ -22,11 +21,9 @@ uploadArchives {
 }
 
 
-
 dependencies {
     compile gradleApi()
     compile localGroovy()
-    compile 'com.android.tools.build:gradle:2.3.0'
 }
 
 sourceCompatibility = rootProject.ext.sourceCompatibility
