@@ -3,9 +3,9 @@ apply plugin: 'com.jfrog.bintray'
 
 Properties config = new Properties()
 config.load(project.file('../VERSION.properties').newDataInputStream())
-def VERSION = config.getProperty("ANNOTATION_VERSION")
-def GROUP = 'me.loody.extra'
-def ARTIFACT_ID = 'annotation'
+def VERSION = config.getProperty("GRADLE_PLUGIN_VERSION")
+def GROUP = rootProject.ext.group
+def ARTIFACT_ID = 'extra-gradle-plugin'
 
 group = GROUP
 version = VERSION
@@ -29,21 +29,21 @@ artifacts {
 publishing {
     publications {
         bintray(MavenPublication) {
+            from components.java
             groupId GROUP
             artifactId ARTIFACT_ID
             version VERSION
 
             artifact sourcesJar
-            from components.java
         }
     }
-    //定义目标仓库 (包所存放的地方)
-    repositories {
-        //发布到自定义的目录
-        maven {
-            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
-        }
-    }
+//    //定义目标仓库 (包所存放的地方)
+//    repositories {
+//        //发布到自定义的目录
+//        maven {
+//            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
+//        }
+//    }
 }
 
 bintray {
@@ -59,12 +59,12 @@ bintray {
     publications = ['bintray']
     pkg {
         repo = "maven"
-        name = "extra-annotation"
+        name = "extra-gradle-plugin"
         websiteUrl = siteUrl
         issueTrackerUrl = issueUrl
         vcsUrl = gitUrl
-        desc = "Annotation for Extra library."
-        labels = ["Android", "Extra", "annotation"]
+        desc = "Extra gradle plugin"
+        labels = ["Android", "Extra", "gradle","gradle plugin"]
         licenses = ["Apache-2.0"]
         publicDownloadNumbers = true
         publish = true

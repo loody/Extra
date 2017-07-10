@@ -15,6 +15,10 @@ class ExtraPlugin implements Plugin<Project> {
                 compile extra
                 annotationProcessor extra_compiler
             }
+        } else {
+            String extraVersion = "0.1.0"
+            project.dependencies.add("compile", "me.loody:extra:${extraVersion}")
+            project.dependencies.add(apt, "me.loody:extra-compiler:${extraVersion}")
         }
     }
 }

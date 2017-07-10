@@ -8,7 +8,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'me.loody.extra:extra-gradle-plugin:0.1.0'
+        classpath 'me.loody:extra-gradle-plugin:0.1.0'
     }
 }
 

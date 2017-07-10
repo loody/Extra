@@ -8,8 +8,8 @@ repositories {
     }
 }
 
-group='me.loody.extra'
-version='0.1.0'
+group = rootProject.ext.group
+version = '0.1.0'
 
 
 uploadArchives {
@@ -29,3 +29,4 @@ dependencies {
 sourceCompatibility = rootProject.ext.sourceCompatibility
 targetCompatibility = rootProject.ext.targetCompatibility
 
+apply from: 'publish.gradle'

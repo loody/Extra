@@ -9,7 +9,7 @@ import me.loody.extra.Extra;
 import me.loody.extra.anotation.ExtraParam;
 
 public class TestActivity extends AppCompatActivity {
-    @ExtraParam
+    @ExtraParam(value = "name")
     String name;
 
     @Override

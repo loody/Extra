@@ -1,2 +1,2 @@
-include ':extra', ':extra-anotation', ':extra-compiler', ':extra-gradle-plugin'
-include ':sample'
+include ':extra', ':extra-annotation', ':extra-compiler', ':extra-gradle-plugin'
+//include ':sample'

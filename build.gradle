@@ -18,9 +18,6 @@ allprojects {
         jcenter()
         mavenCentral()
         maven { url 'https://maven.google.com' }
-        maven {
-            url '../repo'
-        }
     }
 }
 
@@ -38,4 +35,6 @@ ext {
     targetSdkVersion = 26
 
     supportVersion = "25.4.0"
+
+    group = "me.loody"
 }

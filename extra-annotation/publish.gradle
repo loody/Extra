@@ -3,9 +3,9 @@ apply plugin: 'com.jfrog.bintray'
 
 Properties config = new Properties()
 config.load(project.file('../VERSION.properties').newDataInputStream())
-def VERSION = config.getProperty("COMPILER_VERSION")
+def VERSION = config.getProperty("ANNOTATION_VERSION")
 def GROUP = rootProject.ext.group
-def ARTIFACT_ID = 'extra-compiler'
+def ARTIFACT_ID = 'extra-annotation'
 
 group = GROUP
 version = VERSION
@@ -59,12 +59,12 @@ bintray {
     publications = ['bintray']
     pkg {
         repo = "maven"
-        name = "extra-compiler"
+        name = "extra-annotation"
         websiteUrl = siteUrl
         issueTrackerUrl = issueUrl
         vcsUrl = gitUrl
-        desc = "Annotation compiler for Extra library."
-        labels = ["Android", "Extra", "annotation","compiler"]
+        desc = "Annotation for Extra library."
+        labels = ["Android", "Extra", "annotation"]
         licenses = ["Apache-2.0"]
         publicDownloadNumbers = true
         publish = true

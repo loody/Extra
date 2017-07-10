@@ -4,7 +4,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 Properties config = new Properties()
 config.load(project.file('../VERSION.properties').newDataInputStream())
 def VERSION = config.getProperty("EXTRA_VERSION")
-group = "me.loody.extra"
+group = rootProject.ext.group
 version = VERSION
 
 //项目主页

@@ -9,8 +9,11 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * anomation for inject param
+ */
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
 public @interface ExtraParam {
     //key in bundle
     String value() default "";
