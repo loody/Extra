@@ -86,6 +86,7 @@ bintray {
         websiteUrl = siteUrl
         issueTrackerUrl = issuesUrl
         vcsUrl = gitUrl
+        desc = "A intent data injector for Android ."
         labels = ["Android", "Extra"]
         licenses = ["Apache-2.0"]
         publicDownloadNumbers = true

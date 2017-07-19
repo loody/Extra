@@ -28,6 +28,10 @@ android {
     }
 }
 
+Properties version = new Properties()
+version.load(project.file('../VERSION.properties').newDataInputStream())
+def annoVersion = version.getProperty("ANNOTATION_VERSION")
+
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
@@ -36,7 +40,9 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile "com.android.support:support-v4:${rootProject.ext.supportVersion}"
-    compile project(':extra-annotation')
+//    compile project(':extra-annotation')
+    compile "me.loody:extra-annotation:${annoVersion}"
+
 }
 
 apply from: 'publish.gradle'

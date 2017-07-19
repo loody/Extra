@@ -22,7 +22,14 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
 }
 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+
 artifacts {
+    archives javadocJar
     archives sourcesJar
 }
 
@@ -34,16 +41,17 @@ publishing {
             version VERSION
 
             artifact sourcesJar
+            artifact javadocJar
             from components.java
         }
     }
-//    //定义目标仓库 (包所存放的地方)
-//    repositories {
-//        //发布到自定义的目录
-//        maven {
-//            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
-//        }
-//    }
+    //定义目标仓库 (包所存放的地方)
+    repositories {
+        //发布到自定义的目录
+        maven {
+            url '../repo' //本地仓库 (包存放在项目更目录下的repo目录)
+        }
+    }
 }
 
 bintray {

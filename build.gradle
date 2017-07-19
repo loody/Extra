@@ -10,6 +10,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'me.loody:extra-gradle-plugin:0.1.1'
     }
 }
 
@@ -35,6 +36,8 @@ ext {
     targetSdkVersion = 26
 
     supportVersion = "25.4.0"
+    extraVersion = "0.1.1"
+    extraCompilerVersion = "0.1.1"
 
     group = "me.loody"
 }

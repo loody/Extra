@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -24,6 +23,8 @@ import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.Modifier;
@@ -34,12 +35,14 @@ import javax.lang.model.type.PrimitiveType;
 import javax.lang.model.type.TypeKind;
 import javax.lang.model.type.TypeMirror;
 
-import me.loody.extra.anotation.ExtraParam;
+import me.loody.extra.annotation.ExtraParam;
 
 /**
  * 注解处理器
  */
 @AutoService(Processor.class)
+@SupportedAnnotationTypes("me.loody.extra.annotation.ExtraParam")
+@SupportedSourceVersion(SourceVersion.RELEASE_7)
 public final class ExtraParamProcessor extends AbstractProcessor {
     public static final String ACTIVITY_FULL_NAME = "android.app.Activity";
     public static final String FRAGMENT_FULL_NAME = "android.app.Fragment";
@@ -277,15 +280,15 @@ public final class ExtraParamProcessor extends AbstractProcessor {
         return c == null || c.length() == 0;
     }
 
-    @Override
-    public Set<String> getSupportedAnnotationTypes() {
-        Set<String> types = new LinkedHashSet<>();
-        types.add("me.loody.extra.anotation.ExtraParam");
-        return types;
-    }
-
-    @Override
-    public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.RELEASE_7;
-    }
+//    @Override
+//    public Set<String> getSupportedAnnotationTypes() {
+//        Set<String> types = new LinkedHashSet<>();
+//        types.add("me.loody.extra.annotation.ExtraParam");
+//        return types;
+//    }
+//
+//    @Override
+//    public SourceVersion getSupportedSourceVersion() {
+//        return SourceVersion.RELEASE_7;
+//    }
 }

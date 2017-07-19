@@ -6,9 +6,14 @@ apply plugin: 'java'
 sourceCompatibility = rootProject.ext.sourceCompatibility
 targetCompatibility = rootProject.ext.targetCompatibility
 
+Properties version = new Properties()
+version.load(project.file('../VERSION.properties').newDataInputStream())
+def annoVersion = version.getProperty("ANNOTATION_VERSION")
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile project(':extra-annotation')
+//    compile project(':extra-annotation')
+    compile "me.loody:extra-annotation:${annoVersion}"
     compile 'com.squareup:javapoet:1.9.0'
     compile 'com.google.auto.service:auto-service:1.0-rc3'
 }

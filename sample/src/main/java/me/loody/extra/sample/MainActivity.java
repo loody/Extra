@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TestActivity.class);
-                intent.putExtra("name", "extra");
+                intent.putExtra("n", "extra");
+                intent.putExtra("a", 11);
                 startActivity(intent);
             }
         });
