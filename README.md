@@ -1,9 +1,7 @@
 # Extra
--------
-    A intent data injector for Android .
+A intent data injector for Android .
 
-## Getting started
-------------------
+# Getting started
 
 ```Groovy
 buildscript {
@@ -34,7 +32,6 @@ dependencies {
 ```
 
 # Simple usage
--------
 
 ```java
 
@@ -57,16 +54,12 @@ public class TestActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.tv_name)).setText(String.format("name=%1$s\nage=%2$d", TextUtils.isEmpty(name)?"":name, age));
     }
 }
-
-
 ```
 
 # Thanks
---------
 This library is reference by [Router](https://github.com/chenenyu/Router) and uses some of its source code.
 
 # License
----------
 
     Copyright 2017 loody
 
